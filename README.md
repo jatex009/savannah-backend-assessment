@@ -132,7 +132,7 @@ savannah-backend-assessment/
             └── Vegetables
 ```
 2. Order Processing
-    When orders are created:
+    - When orders are created:
         - SMS sent to customer via Africa's Talking
         - Email notification sent to administrator
         - Order status tracking
