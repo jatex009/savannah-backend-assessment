@@ -70,22 +70,22 @@ production build:
 
 ## API ENDPOINTS
 Products
-    GET /api/products/ - List all products
-    POST /api/products/ - Create product
-    GET /api/products/{id}/ - Get product details
-    GET /api/products/average_price_by_category/?category_id=1 - Average price by category
+    **GET /api/products/** - List all products
+    **POST /api/products/** - Create product
+    **GET /api/products/{id}/** - Get product details
+    **GET /api/products/average_price_by_category/?category_id=1** - Average price by category
 
 Categories
-    GET /api/categories/ - List categories (hierarchical)
-    POST /api/categories/ - Create category
+    **GET /api/categories/** - List categories (hierarchical)
+    **POST /api/categories/** - Create category
 
 Orders
-    GET /api/orders/ - List orders
-    POST /api/orders/ - Create order (triggers SMS + email)
+    **GET /api/orders/** - List orders
+    **POST /api/orders/** - Create order (triggers SMS + email)
 
 Authentication
-    POST /o/token/ - Get OAuth2 token
-    POST /o/revoke_token/ - Revoke token
+    **POST /o/token/** - Get OAuth2 token
+    **POST /o/revoke_token/** - Revoke token
 
 ### Example of API usage
 ``` bash
@@ -133,22 +133,22 @@ savannah-backend-assessment/
 ```
 2. Order Processing
     When orders are created:
-        SMS sent to customer via Africa's Talking
-        Email notification sent to administrator
-        Order status tracking
+        - SMS sent to customer via Africa's Talking
+        - Email notification sent to administrator
+        - Order status tracking
 
 3. Authentication
-    OAuth2/OpenID Connect implementation for secure API access.
+    - OAuth2/OpenID Connect implementation for secure API access.
 
 4. Development Notes 
-    a. SMS functionality uses Africa's Talking sandbox for testing
-    b. Email notifications configured for Gmail SMTP
-    c. All API endpoints support pagination
-    d. Comprehensive error handling and logging
-    e. Follow Django best practices (DRY, KISS principles)
+    - a. SMS functionality uses Africa's Talking sandbox for testing
+    - b. Email notifications configured for Gmail SMTP
+    - c. All API endpoints support pagination
+    - d. Comprehensive error handling and logging
+    - e. Follow Django best practices (DRY, KISS principles)
 
 5. Deployment Considerations
-    a. Environment variables for sensitive data
-    b. PostgreSQL for production database
-    c. Docker for consistent deployments
-    d. Kubernetes manifests included for orchestration
+    - a. Environment variables for sensitive data
+    - b. PostgreSQL for production database
+    - c. Docker for consistent deployments
+    - d. Kubernetes manifests included for orchestration
