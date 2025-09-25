@@ -35,6 +35,7 @@ pip install -r requirements.txt
 ```
 ### 2. Environment Setup
 Create .env file:
+``` bash
     DEBUG=True
     SECRET_KEY=your-secret-key
     DATABASE_URL=postgresql://user:pass@localhost/ecommerce_db
@@ -43,24 +44,29 @@ Create .env file:
     EMAIL_HOST_USER=your-email@gmail.com
     EMAIL_HOST_PASSWORD=your-app-password
     ADMIN_EMAIL=admin@company.com
-
+```
 ### 3: Database Setup
-run the below commands
+run the below commands:
+``` bash
     python manage.py migrate
     python manage.py createsuperuser
-
+```
 
 ### 4: Running the development server
+``` bash
 python manage.py runserver
-
+```
 
 ## DOCKER DEPLOYMENT
-local development
+local development:
+``` bash
     docker-compose up --build
-
-production build
+```
+production build:
+``` bash
     docker build -t ecommerce-api .
     docker run -p 8000:8000 ecommerce-api
+```
 
 ## API ENDPOINTS
 Products
@@ -82,6 +88,7 @@ Authentication
     POST /o/revoke_token/ - Revoke token
 
 ### Example of API usage
+``` bash
     curl -X POST http://localhost:8000/api/orders/ \
     -H "Content-Type: application/json" \
     -d '{
@@ -89,16 +96,17 @@ Authentication
         "items": [{"product_id": 1, "quantity": 2}],
         "notes": "Test order"
     }'
-
+```
 ### For Testing Run the below commands
+``` bash
     # Run all tests
     python manage.py test
 
     # Run with coverage
     pytest --cov=. --cov-report=html
-
+```
 ## PROJECT STRUCTURE
-
+``` 
 savannah-backend-assessment/
 ├── ecommerce_api/          # Django project settings
 ├── products/               # Product & category models/APIs
@@ -109,11 +117,11 @@ savannah-backend-assessment/
 ├── Dockerfile             # Docker configuration
 ├── docker-compose.yml     # Multi-container setup
 └── requirements.txt       # Python dependencies
-
+```
 
 ### Key Features Implemented
 1. Hierarchical Categories
-
+```
     Products are organized in unlimited-depth categories using django-mptt:
         All Products
         ├── Bakery
@@ -122,7 +130,7 @@ savannah-backend-assessment/
         └── Produce
             ├── Fruits
             └── Vegetables
-
+```
 2. Order Processing
     When orders are created:
         SMS sent to customer via Africa's Talking
