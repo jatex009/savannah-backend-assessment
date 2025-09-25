@@ -69,23 +69,23 @@ production build:
 ```
 
 ## API ENDPOINTS
-Products
-    **GET /api/products/** - List all products
-    **POST /api/products/** - Create product
-    **GET /api/products/{id}/** - Get product details
-    **GET /api/products/average_price_by_category/?category_id=1** - Average price by category
+- Products
+    - **GET /api/products/** - List all products
+    - **POST /api/products/** - Create product
+    - **GET /api/products/{id}/** - Get product details
+    - **GET /api/products/average_price_by_category/?category_id=1** - Average price by category
 
-Categories
-    **GET /api/categories/** - List categories (hierarchical)
-    **POST /api/categories/** - Create category
+- Categories
+    - **GET /api/categories/** - List categories (hierarchical)
+    - **POST /api/categories/** - Create category
 
-Orders
-    **GET /api/orders/** - List orders
-    **POST /api/orders/** - Create order (triggers SMS + email)
+- Orders
+    - **GET /api/orders/** - List orders
+    - **POST /api/orders/** - Create order (triggers SMS + email)
 
-Authentication
-    **POST /o/token/** - Get OAuth2 token
-    **POST /o/revoke_token/** - Revoke token
+- Authentication
+    - **POST /o/token/** - Get OAuth2 token
+    - **POST /o/revoke_token/** - Revoke token
 
 ### Example of API usage
 ``` bash
