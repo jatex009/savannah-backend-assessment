@@ -16,13 +16,9 @@
 - [Quick Start](#-quick-start)
 - [API Documentation](#-api-documentation)
 - [Core Modules](#-core-modules)
-- [Authentication](#-authentication)
-- [Notification System](#-notification-system)
 - [Testing](#-testing)
 - [Deployment](#-deployment)
-- [Performance](#-performance)
-- [Security](#-security)
-- [Contributing](#-contributing)
+
 
 ## ✨ Features
 
