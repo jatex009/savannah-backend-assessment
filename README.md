@@ -141,8 +141,19 @@ source venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 
+# Setup database
+python manage.py migrate
+python manage.py createsuperuser
+
+# Load sample data
+python manage.py loaddata fixtures/sample_data.json
+
+# Start development server
+python manage.py runserver
+
 ```
 ### 2. Environment Setup
+```bash
 Create .env file:
     DEBUG=True
     SECRET_KEY=your-secret-key
@@ -152,15 +163,15 @@ Create .env file:
     EMAIL_HOST_USER=your-email@gmail.com
     EMAIL_HOST_PASSWORD=your-app-password
     ADMIN_EMAIL=admin@company.com
+```
 
 ### 3: Database Setup
 run the below commands
+```bash
     python manage.py migrate
     python manage.py createsuperuser
+```
 
-
-### 4: Running the development server
-python manage.py runserver
 
 
 ## 📚 API Documentation
