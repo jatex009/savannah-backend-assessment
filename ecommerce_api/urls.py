@@ -19,6 +19,8 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from products.views import ProductViewSet, CategoryViewSet
 from orders.views import OrderViewSet
+from django.http import JsonResponse
+from django.db import connections
 
 router = DefaultRouter()
 router.register(r'products', ProductViewSet)
@@ -31,3 +33,15 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
 ]
+
+def health_check(request):
+    db_conn = connections['default']
+    try:
+        db_conn.cursor()
+        return JsonResponse({
+            'status': 'healthy',
+            'database': 'connected',
+            'version': '1.0.0'
+        })
+    except:
+        return JsonResponse({'status': 'unhealthy'}, status=500)

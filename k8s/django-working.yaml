@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecommerce-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ecommerce-api
+  template:
+    metadata:
+      labels:
+        app: ecommerce-api
+    spec:
+      containers:
+      - name: ecommerce-api
+        image: python:3.8-slim
+        command: ["/bin/sh"]
+        args:
+          - -c
+          - |
+            apt-get update && apt-get install -y git postgresql-client
+            git clone https://github.com/jatex009/savannah-backend-assessment.git /app
+            cd /app
+            pip install -r requirements.txt
+            echo "Waiting for database..."
+            sleep 30
+            python manage.py migrate --noinput || echo "Migration failed, continuing..."
+            python manage.py runserver 0.0.0.0:8000
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://postgres:postgres@postgres-service.default.svc.cluster.local:5432/ecommerce_db"
+        - name: DEBUG
+          value: "True"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ecommerce-api-service
+spec:
+  selector:
+    app: ecommerce-api
+  ports:
+  - port: 8000
+    targetPort: 8000
+    nodePort: 30000
+  type: NodePort
